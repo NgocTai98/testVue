@@ -1,34 +1,31 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Category from '@/components/Category'
+import VueRouter from 'vue-router'
 import listUser from '@/components/listUser'
+
 import EditStudent from '@/components/EditStudent'
 import AddStudent from '@/components/AddStudent'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+export default new VueRouter({
   routes: [
+     
     {
       path: '/',
       name: 'listUser',
-      component: listUser
+      component: listUser,      
     },
     {
-      path: '/category',
-      name: 'Category',
-      component: Category
-    },
-    {
-      path: '/editStudent',
+      path: '/editStudent/:idStudent',
       name: 'EditStudent',
-      component: EditStudent
+      component: EditStudent,
+      props: true
     },
     {
       path: '/addStudent',
       name: 'AddStudent',
-      component: AddStudent
+      component: AddStudent,
+      
     },
   ]
 })
