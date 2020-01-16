@@ -5,7 +5,7 @@
         <div class="category">
           <h2>Danh sách lớp</h2>
           <ol class="list-group">
-            <li class="list-group-item" v-for="(department, index) in  departments" :key="index">
+            <li class="list-group-item" v-for="(department, index) in  departments" :key="index" @click="selectedDepartment = department.name">
               {{ department.name }}                
                 <button type="submit" class="del" @click="delDepartment(index)">Xóa</button>
                 <button type="submit" class="edit" @click="editDepartment(index)">Sửa</button>
@@ -26,9 +26,10 @@
       <div class="col-lg-8">
         <div class="list">
           <h2>Danh sách sinh viên trong lớp</h2>
+          <h4 style="color: #9e0a0a; text-align: center; text-transform: uppercase"> {{ selectedDepartment }} </h4>
           <div class="content">
             <ol class="list-group">
-              <li class="list-group-item" v-for="(student,index) in students" :key="index">
+              <li class="list-group-item" v-for="(student,index) in students" :key="index" v-show="student.class == selectedDepartment">
                 <span>{{ student.studentName }}</span>
                
                 <button
@@ -62,6 +63,7 @@ export default {
     return {
       newDepart: "",
       newclass: '',
+      selectedDepartment: 'Công nghệ thông tin 1'
     };
   },
   computed: {
@@ -72,6 +74,7 @@ export default {
       return this.$store.state.students;
     }
   },
+  
   methods: {
     addDepartment() {
       this.departments.push({
@@ -82,8 +85,11 @@ export default {
       this.newDepart = "";
     },
     editDepartment(id){
-      this.newclass = prompt('Sửa tên lớp');
-      this.departments[id].name = this.newclass;
+      this.newclass = prompt('Sửa tên lớp : ' + this.departments[id].name);
+      if (this.newclass) {
+        this.departments[id].name = this.newclass;
+      }
+      
     },
     delDepartment(id) {
       if (
