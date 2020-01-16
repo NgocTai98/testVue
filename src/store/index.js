@@ -8,18 +8,18 @@ export default new Vuex.Store({
         departments: [
             {
               idDepart: 1,
-              name: "Công nghệ thông tin 1",
-              edit: false
+              name: "IT 1",
+              
             },
             {
               idDepart: 2,
-              name: "Công nghệ thông tin 2",
-              edit: false
+              name: "IT 2",
+             
             },
             {
               idDepart: 3,
-              name: "Công nghệ thông tin 3",
-              edit: false
+              name: "IT 3",
+              
             }
           ],
           
@@ -27,55 +27,64 @@ export default new Vuex.Store({
             {
               idStudent: 1,
               studentName: "Nguyễn Văn A",
-              age: 19,
+              age: '19',
               sdt: "234545787",
               sex: "male",
               address: "Cầu Giấy - Hà Nội",
-              class: "Công nghệ thông tin 1"
+              class: "IT 1"
             },
             {
               idStudent: 2,
               studentName: "Trần Thị B",
-              age: 19,
+              age: '19',
               sdt: "2345668787",
               sex: "female",
               address: "Đống Đa - Hà Nội",
-              class: "Công nghệ thông tin 2"
+              class: "IT 2"
             },
             {
               idStudent: 3,
               studentName: "Đinh Bá C",
-              age: 19,
+              age: '19',
               sdt: "987654322",
               sex: "male",
               address: "Cầu Giấy - Hà Nội",
-              class: "Công nghệ thông tin 1"
+              class: "IT 1"
             },
             {
               idStudent: 4,
               studentName: "Hoàng Khánh D",
-              age: 19,
+              age: '19',
               sdt: "234567687",
               sex: "female",
               address: "Long Biên - Hà Nội",
-              class: "Công nghệ thông tin 3"
+              class: "IT 3"
             },{
               idStudent: 5,
               studentName: "Đinh Hữu E",
-              age: 21,
+              age: '21',
               sdt: "896832",
               sex: "male",
               address: "Vĩnh Bảo - Hải Phòng",
-              class: "Công nghệ thông tin 1"
+              class: "IT 1"
             },
             {
               idStudent: 6,
               studentName: "Lưu Tiến F",
-              age: 20,
+              age: '20',
               sdt: "5467889",
               sex: "female",
               address: "Chương Mỹ - Hưng Yên",
-              class: "Công nghệ thông tin 1"
+              class: "IT 1"
+            },
+            {
+              idStudent: 7,
+              studentName: "Đoàn Ngọc T",
+              age: '21',
+              sdt: "456789",
+              sex: "male",
+              address: "Hải Phòng",
+              class: "IT 2"
             }
           ],
 

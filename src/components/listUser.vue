@@ -5,11 +5,19 @@
         <div class="category">
           <h2>Danh sách lớp</h2>
           <ol class="list-group">
-            <li class="list-group-item" v-for="(department, index) in  departments" :key="index" @click="selectedDepartment = department.name">
-              {{ department.name }}                
-                <button type="submit" class="del" @click="delDepartment(index)">Xóa</button>
-                <button type="submit" class="edit" @click="editDepartment(index)">Sửa</button>
-             
+            <li
+              class="list-group-item"
+              v-for="(department, index) in  departments"
+              :key="index"
+              @click="selectedDepartment = department.name"
+            >
+              {{ department.name }}
+              <button
+                type="submit"
+                class="del"
+                @click="delDepartment(index)"
+              >Xóa</button>
+              <button type="submit" class="edit" @click="editDepartment(index)">Sửa</button>
             </li>
           </ol>
           <div class="form-group add">
@@ -26,23 +34,26 @@
       <div class="col-lg-8">
         <div class="list">
           <h2>Danh sách sinh viên trong lớp</h2>
-          <h4 style="color: #9e0a0a; text-align: center; text-transform: uppercase"> {{ selectedDepartment }} </h4>
+          <h4
+            style="color: #9e0a0a; text-align: center; text-transform: uppercase"
+          >{{ selectedDepartment }}</h4>
           <div class="content">
             <ol class="list-group">
-              <li class="list-group-item" v-for="(student,index) in students" :key="index" v-show="student.class == selectedDepartment">
+              <li
+                class="list-group-item"
+                v-for="(student,index) in students"
+                :key="index"
+                v-show="student.class == selectedDepartment"
+              >
                 <span>{{ student.studentName }}</span>
-               
-                <button
-                  type="submit"
-                  class="del"
-                  @click="delStudent(index)"
-                >Xóa</button>
+
+                <button type="submit" class="del" @click="delStudent(index)">Xóa</button>
                 <button type="submit" class="edit">
                   <router-link :to="`/editStudent/${student.idStudent}`">Sửa</router-link>
                 </button>
               </li>
             </ol>
-            <router-link to="/addStudent" >
+            <router-link to="/addStudent">
               <button
                 class="btn btn-primary"
                 style="float: right; margin-top: 10px"
@@ -56,41 +67,58 @@
   </div>
 </template>
 <script>
-
 export default {
   name: "listUser",
   data() {
     return {
       newDepart: "",
-      newclass: '',
-      selectedDepartment: 'Công nghệ thông tin 1'
+      newclass: "",
+      selectedDepartment: this.$store.state.departments[0].name,
     };
   },
   computed: {
-    departments(){
+    departments() {
       return this.$store.state.departments;
     },
-    students(){
+    students() {
       return this.$store.state.students;
     }
   },
-  
+
   methods: {
     addDepartment() {
-      this.departments.push({
-        idDepart: this.idDepart++,
-        name: this.newDepart,
-        edit: false,
-      });
-      this.newDepart = "";
+      
+      for (let i = 0; i < this.departments.length; i++) {
+        if ( this.departments[i].name == this.newDepart ) {
+          console.log('trùng')
+          var loop = true;
+          break;
+        } 
+      }
+      if (loop) {
+        alert('Tên lớp không thể trùng. Hãy nhập tên khác')
+      } else {
+        this.departments.push({
+            idDepart: this.idDepart++,
+            name: this.newDepart,
+            edit: false
+          });
+          this.newDepart = "";
+      }
     },
-    editDepartment(id){
-      this.newclass = prompt('Sửa tên lớp : ' + this.departments[id].name);
+
+    editDepartment(id) {
+      this.newclass = prompt("Sửa tên lớp : " + this.departments[id].name);
       if (this.newclass) {
+        for (let i = 0; i < this.students.length; i++) {
+          if (this.students[i].class == this.departments[id].name) {
+            this.students[i].class = this.newclass;
+          }
+        }
         this.departments[id].name = this.newclass;
       }
-      
     },
+
     delDepartment(id) {
       if (
         confirm("Bạn có chắc chắn muốn xóa lớp " + this.departments[id].name)
@@ -98,19 +126,17 @@ export default {
         this.departments.splice(id, 1);
       }
     },
-   
+
     delStudent(id) {
       if (
         confirm(
           "Bạn có chắc chắn muốn xóa sinh viên " + this.students[id].studentName
         )
       ) {
-         this.students.splice(id, 1);
+        this.students.splice(id, 1);
       }
-    },
-   
-  },
-  
+    }
+  }
 };
 </script>
 <style>
