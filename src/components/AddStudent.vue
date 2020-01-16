@@ -7,12 +7,9 @@
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Tên sinh viên" v-model="name" />
         <span>Tuổi:</span>
-        <select name id v-model="age">
-          <option value="18">18</option>
-          <option value="19">19</option>
-          <option value="20">20</option>
-          <option value="21">21</option>
-          <option value="22">22</option>
+        <select name id v-model="age" >
+          <option v-for="(year, index) in date" :key="index" :value="{year}">{{ year }}</option>
+         
         </select>
         <input type="radio" name="sex" v-model="sex" value="male" />
         <span>Male</span>
@@ -36,7 +33,7 @@ export default {
       name: "",
       age: 0,
       sex: "",
-      phone: 0,
+      phone: '',
       address: "",
       depart: ""
     };
@@ -45,6 +42,9 @@ export default {
     students(){
       return this.$store.state.students;
     },
+    date(){
+      return this.$store.state.date;
+    }
     
   },
   methods: {

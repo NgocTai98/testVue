@@ -28,7 +28,7 @@ export default new Vuex.Store({
               idStudent: 1,
               studentName: "Nguyễn Văn A",
               age: 19,
-              sdt: 234545787,
+              sdt: "234545787",
               sex: "male",
               address: "Cầu Giấy - Hà Nội",
               class: "Công nghệ thông tin 1"
@@ -37,7 +37,7 @@ export default new Vuex.Store({
               idStudent: 2,
               studentName: "Trần Thị B",
               age: 19,
-              sdt: 2345668787,
+              sdt: "2345668787",
               sex: "female",
               address: "Đống Đa - Hà Nội",
               class: "Công nghệ thông tin 2"
@@ -46,7 +46,7 @@ export default new Vuex.Store({
               idStudent: 3,
               studentName: "Đinh Bá C",
               age: 19,
-              sdt: 987654322,
+              sdt: "987654322",
               sex: "male",
               address: "Cầu Giấy - Hà Nội",
               class: "Công nghệ thông tin 1"
@@ -55,12 +55,14 @@ export default new Vuex.Store({
               idStudent: 4,
               studentName: "Hoàng Khánh D",
               age: 19,
-              sdt: 234567687,
+              sdt: "234567687",
               sex: "female",
               address: "Long Biên - Hà Nội",
               class: "Công nghệ thông tin 3"
             }
           ],
+
+          date: [18,19,20,21,22],
           
     }
 });

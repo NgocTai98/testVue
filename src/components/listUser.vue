@@ -6,8 +6,9 @@
           <h2>Danh sách lớp</h2>
           <ol class="list-group">
             <li class="list-group-item" v-for="(department, index) in  departments" :key="index">
-              {{ department.name }}
+              {{ department.name }}                
                 <button type="submit" class="del" @click="delDepartment(index)">Xóa</button>
+                <button type="submit" class="edit" @click="editDepartment(index)">Sửa</button>
              
             </li>
           </ol>
@@ -60,6 +61,7 @@ export default {
   data() {
     return {
       newDepart: "",
+      newclass: '',
     };
   },
   computed: {
@@ -78,6 +80,10 @@ export default {
         edit: false,
       });
       this.newDepart = "";
+    },
+    editDepartment(id){
+      this.newclass = prompt('Sửa tên lớp');
+      this.departments[id].name = this.newclass;
     },
     delDepartment(id) {
       if (
@@ -123,6 +129,13 @@ export default {
   float: right;
 }
 #app .content .edit {
+  background: none;
+
+  font-weight: bold;
+  border: 0;
+  float: right;
+}
+#app .category .edit {
   background: none;
 
   font-weight: bold;
