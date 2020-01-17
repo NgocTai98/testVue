@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="edituser">
     <h1
       style="text-align: center; color: green; text-transform: uppercase"
     >Sửa thông tin của sinh viên: {{ name }}</h1>
@@ -18,7 +18,7 @@
         </select>
 
         <span v-if="sex == 'male'">
-          <input type="radio" name="sex" value="male" v-model="newSex" checked />
+          <input type="radio" name="sex" value="male" v-model="newSex" />
           <span>Male</span>
           <input type="radio" name="sex" value="female" v-model="newSex" />
           <span>FeMale</span>
@@ -26,7 +26,7 @@
         <span v-if="sex == 'female'">
           <input type="radio" name="sex" value="male" v-model="newSex" />
           <span>Male</span>
-          <input type="radio" name="sex" value="female" v-model="newSex" checked />
+          <input type="radio" name="sex" value="female" v-model="newSex" />
           <span>FeMale</span>
         </span>
 
@@ -130,6 +130,9 @@ export default {
 };
 </script>
 <style >
+.edituser{
+  background-color: #a5acb3;
+}
 .info {
   width: 500px;
   margin-left: 430px;

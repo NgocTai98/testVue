@@ -4,6 +4,7 @@ import listUser from '@/components/listUser'
 
 import EditStudent from '@/components/EditStudent'
 import AddStudent from '@/components/AddStudent'
+import infoStudent from '@/components/infoStudent'
 
 Vue.use(VueRouter)
 
@@ -27,5 +28,10 @@ export default new VueRouter({
       component: AddStudent,
       
     },
+    {
+      path: '/infoStudent/:idStudent',
+      name: 'infoStudent',
+      component: infoStudent,
+          },
   ]
 })

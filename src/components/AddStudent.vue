@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="adduser">
     <h1
       style="text-align: center; color: green; text-transform: uppercase"
     >Thêm thông tin của sinh viên</h1>
@@ -119,6 +119,9 @@ export default {
 };
 </script>
 <style >
+.adduser {
+  background-color: #a5acb3;
+}
 .info {
   width: 500px;
   margin-left: 400px;

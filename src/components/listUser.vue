@@ -1,7 +1,7 @@
 <template>
   <div class="listuser">
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-lg-4 col-sm-4">
         <div class="category">
           <h2>Danh sách lớp</h2>
           <ol class="list-group">
@@ -31,7 +31,8 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-8">
+
+      <div class="col-lg-8 col-sm-8">
         <div class="list">
           <h2>Danh sách sinh viên trong lớp</h2>
           <h4
@@ -44,15 +45,19 @@
                 v-for="(student,index) in students"
                 :key="index"
                 v-show="student.class == selectedDepartment"
+               
               >
                 <span>{{ student.studentName }}</span>
 
                 <button type="submit" class="del" @click="delStudent(index)">Xóa</button>
                 <button type="submit" class="edit">
                   <router-link :to="`/editStudent/${student.idStudent}`">Sửa</router-link>
-                </button>
+                </button>    
+                <button type="submit" class="view" >
+                  <router-link :to="`/infoStudent/${student.idStudent}`">View</router-link>
+                </button>            
               </li>
-            </ol>
+            </ol>               
             <router-link to="/addStudent">
               <button
                 class="btn btn-primary"
@@ -65,7 +70,9 @@
     </div>
     <!-- <router-view ></router-view> -->
   </div>
+ 
 </template>
+ 
 <script>
 export default {
   name: "listUser",
@@ -74,6 +81,7 @@ export default {
       newDepart: "",
       newclass: "",
       selectedDepartment: this.$store.state.departments[0].name,
+      seen: false
     };
   },
   computed: {
@@ -87,23 +95,21 @@ export default {
 
   methods: {
     addDepartment() {
-      
       for (let i = 0; i < this.departments.length; i++) {
-        if ( this.departments[i].name == this.newDepart ) {
-          console.log('trùng')
+        if (this.departments[i].name == this.newDepart) {
           var loop = true;
           break;
-        } 
+        }
       }
       if (loop) {
-        alert('Tên lớp không thể trùng. Hãy nhập tên khác')
+        alert("Tên lớp không thể trùng. Hãy nhập tên khác");
       } else {
         this.departments.push({
-            idDepart: this.idDepart++,
-            name: this.newDepart,
-            edit: false
-          });
-          this.newDepart = "";
+          idDepart: this.idDepart++,
+          name: this.newDepart,
+          edit: false
+        });
+        this.newDepart = "";
       }
     },
 
@@ -135,12 +141,15 @@ export default {
       ) {
         this.students.splice(id, 1);
       }
+    },
+    view() {
+      
     }
   }
 };
 </script>
 <style>
-#app {
+.listuser {
   background-color: #b1aeae;
 }
 #app h2 {
@@ -156,6 +165,13 @@ export default {
 #app .content .del {
   background: none;
   color: red;
+  font-weight: bold;
+  border: 0;
+  float: right;
+}
+#app .content .view {
+  background: none;
+  color: rgb(0, 255, 55);
   font-weight: bold;
   border: 0;
   float: right;
