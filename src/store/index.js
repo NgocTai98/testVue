@@ -29,7 +29,7 @@ export default new Vuex.Store({
               studentName: "Nguyễn Văn A",
               age: '19',
               sdt: "234545787",
-              sex: "male",
+              sex: "nam",
               address: "Cầu Giấy - Hà Nội",
               class: "IT 1"
             },
@@ -38,7 +38,7 @@ export default new Vuex.Store({
               studentName: "Trần Thị B",
               age: '19',
               sdt: "2345668787",
-              sex: "female",
+              sex: "nữ",
               address: "Đống Đa - Hà Nội",
               class: "IT 2"
             },
@@ -47,7 +47,7 @@ export default new Vuex.Store({
               studentName: "Đinh Bá C",
               age: '19',
               sdt: "987654322",
-              sex: "male",
+              sex: "nam",
               address: "Cầu Giấy - Hà Nội",
               class: "IT 1"
             },
@@ -56,7 +56,7 @@ export default new Vuex.Store({
               studentName: "Hoàng Khánh D",
               age: '19',
               sdt: "234567687",
-              sex: "female",
+              sex: "nữ",
               address: "Long Biên - Hà Nội",
               class: "IT 3"
             },{
@@ -64,7 +64,7 @@ export default new Vuex.Store({
               studentName: "Đinh Hữu E",
               age: '21',
               sdt: "896832",
-              sex: "male",
+              sex: "nam",
               address: "Vĩnh Bảo - Hải Phòng",
               class: "IT 1"
             },
@@ -73,7 +73,7 @@ export default new Vuex.Store({
               studentName: "Lưu Tiến F",
               age: '20',
               sdt: "5467889",
-              sex: "female",
+              sex: "nữ",
               address: "Chương Mỹ - Hưng Yên",
               class: "IT 1"
             },
@@ -82,7 +82,7 @@ export default new Vuex.Store({
               studentName: "Đoàn Ngọc T",
               age: '21',
               sdt: "456789",
-              sex: "male",
+              sex: "nam",
               address: "Hải Phòng",
               class: "IT 2"
             }

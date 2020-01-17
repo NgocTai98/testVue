@@ -39,25 +39,41 @@
             style="color: #9e0a0a; text-align: center; text-transform: uppercase"
           >{{ selectedDepartment }}</h4>
           <div class="content">
-            <ol class="list-group">
-              <li
-                class="list-group-item"
-                v-for="(student,index) in students"
-                :key="index"
-                v-show="student.class == selectedDepartment"
-               
-              >
-                <span>{{ student.studentName }}</span>
-
-                <button type="submit" class="del" @click="delStudent(index)">Xóa</button>
-                <button type="submit" class="edit">
-                  <router-link :to="`/editStudent/${student.idStudent}`">Sửa</router-link>
-                </button>    
-                <button type="submit" class="view" >
-                  <router-link :to="`/infoStudent/${student.idStudent}`">View</router-link>
-                </button>            
-              </li>
-            </ol>               
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">Tên sinh viên</th>
+                  <th scope="col">Tuổi</th>
+                  <th scope="col">Giới tính</th>
+                  <th scope="col">Số điện thoại</th>
+                  <th scope="col">Địa chỉ</th>
+                  <th scope="col">Lớp</th>
+                  <th scope="col">Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-for="(student, index) in students"
+                  :key="index"
+                  v-show="student.class == selectedDepartment"
+                >
+                  <td>{{student.idStudent}}</td>
+                  <td>{{ student.studentName }}</td>
+                  <td>{{ student.age }}</td>
+                  <td>{{ student.sex }}</td>
+                  <td>{{ student.sdt }}</td>
+                  <td>{{ student.address }}</td>
+                  <td>{{ student.class }}</td>
+                  <td>
+                    <button type="submit" class="del" @click="delStudent(index)">Xóa</button>
+                    <button type="submit" class="edit">
+                      <router-link :to="`/editStudent/${student.idStudent}`">Sửa</router-link>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
             <router-link to="/addStudent">
               <button
                 class="btn btn-primary"
@@ -70,7 +86,6 @@
     </div>
     <!-- <router-view ></router-view> -->
   </div>
- 
 </template>
  
 <script>
@@ -142,13 +157,14 @@ export default {
         this.students.splice(id, 1);
       }
     },
-    view() {
-      
-    }
+    view() {}
   }
 };
 </script>
 <style>
+.content {
+  background-color: #ffff;
+}
 .listuser {
   background-color: #b1aeae;
 }

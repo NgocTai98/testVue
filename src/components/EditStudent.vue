@@ -13,21 +13,21 @@
         <p>Tên sinh viên:</p>
         <input type="text" class="form-control" :placeholder="name" v-model="newName" />
         <span>Tuổi:</span>
-        <select v-model="newYear">
-          <option v-for="(year,index) in date" :key="index" :value="{Year}">{{ year }}</option>
+        <select name id v-model="newYear">
+          <option v-for="(year, index) in date" :key="index">{{ year }}</option>
         </select>
 
-        <span v-if="sex == 'male'">
-          <input type="radio" name="sex" value="male" v-model="newSex" />
-          <span>Male</span>
-          <input type="radio" name="sex" value="female" v-model="newSex" />
-          <span>FeMale</span>
+        <span v-if="sex == 'nam'">
+          <input type="radio" name="sex" value="nam" v-model="newSex" />
+          <span>Nam</span>
+          <input type="radio" name="sex" value="nữ" v-model="newSex" />
+          <span>Nữ</span>
         </span>
-        <span v-if="sex == 'female'">
-          <input type="radio" name="sex" value="male" v-model="newSex" />
-          <span>Male</span>
-          <input type="radio" name="sex" value="female" v-model="newSex" />
-          <span>FeMale</span>
+        <span v-if="sex == 'nữ'">
+          <input type="radio" name="sex" value="nam" v-model="newSex" />
+          <span>Nam</span>
+          <input type="radio" name="sex" value="nữ" v-model="newSex" />
+          <span>Nữ</span>
         </span>
 
         <p>Số điện thoai:</p>
@@ -80,49 +80,61 @@ export default {
   watch: {},
   computed: {
     students() {
-      this.$store.state.students;
+      return this.$store.state.students;
     },
     date() {
-      this.$store.state.date;
+      return this.$store.state.date;
+    },
+    departments() {
+      return this.$store.state.departments;
     }
   },
 
   methods: {
     editStudent(id) {
-      if (
-        this.newName &&
-        this.newAge &&
-        this.newSex &&
-        this.newPhone &&
-        this.newAddress &&
-        this.newDepart
-      ) {
-        this.$store.state.students[id - 1].studentName = this.newName;
-        this.$store.state.students[id - 1].age = this.newYear;
-        this.$store.state.students[id - 1].sex = this.newSex;
-        this.$store.state.students[id - 1].sdt = this.newPhone;
-        this.$store.state.students[id - 1].address = this.newAddress;
-        this.$store.state.students[id - 1].class = this.newDepart;
-        this.$router.push("/");
-        alert("Đã sửa thành công");
+      for (let i = 0; i < this.departments.length; i++) {
+        if (this.departments[i].name == this.newDepart) {
+          var loop = true;
+        }
+      }
+      if (!loop) {
+        alert("Tên lớp không tồn tại");
       } else {
-        if (!this.newName) {
-          this.errors.push("Tên Không được để trống");
-        }
-        if (!this.newAge) {
-          this.errors.push("Tuổi Không được để trống");
-        }
-        if (!this.newSex) {
-          this.errors.push("Giới tính Không được để trống");
-        }
-        if (!this.newPhone) {
-          this.errors.push("SDT Không được để trống");
-        }
-        if (!this.newAddress) {
-          this.errors.push("Địa chỉ Không được để trống");
-        }
-        if (!this.newDepart) {
-          this.errors.push("Tên lớp Không được để trống");
+        if (
+          this.newName &&
+          this.newYear &&
+          this.newSex &&
+          this.newPhone &&
+          this.newAddress &&
+          this.newDepart
+        ) {
+          this.$store.state.students[id - 1].studentName = this.newName;
+          this.$store.state.students[id - 1].age = this.newYear;
+          this.$store.state.students[id - 1].sex = this.newSex;
+          this.$store.state.students[id - 1].sdt = this.newPhone;
+          this.$store.state.students[id - 1].address = this.newAddress;
+          this.$store.state.students[id - 1].class = this.newDepart;
+          this.$router.push("/");
+          alert("Đã sửa thành công");
+        } else {
+          if (!this.newName) {
+            this.errors.push("Tên Không được để trống");
+          }
+          if (!this.newYear) {
+            this.errors.push("Tuổi Không được để trống");
+          }
+          if (!this.newSex) {
+            this.errors.push("Giới tính Không được để trống");
+          }
+          if (!this.newPhone) {
+            this.errors.push("SDT Không được để trống");
+          }
+          if (!this.newAddress) {
+            this.errors.push("Địa chỉ Không được để trống");
+          }
+          if (!this.newDepart) {
+            this.errors.push("Tên lớp Không được để trống");
+          }
         }
       }
     }
@@ -130,7 +142,7 @@ export default {
 };
 </script>
 <style >
-.edituser{
+.edituser {
   background-color: #a5acb3;
 }
 .info {
