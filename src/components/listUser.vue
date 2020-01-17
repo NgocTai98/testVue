@@ -20,14 +20,14 @@
               <button type="submit" class="edit" @click="editDepartment(index)">Sửa</button>
             </li>
           </ol>
-          <div class="form-group add">
+          <div class="form-group adds">
             <input
               type="text"
               v-model="newDepart"
               class="form-control"
               placeholder="Thêm một lớp mới"
             />
-            <button class="btn btn-primary" @click="addDepartment">Thêm</button>
+            <button class="create" @click="addDepartment">Thêm</button>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@
             </table>
             <router-link to="/addStudent">
               <button
-                class="btn btn-primary"
+                class="create"
                 style="float: right; margin-top: 10px"
               >Thêm sinh viên mới</button>
             </router-link>
@@ -119,12 +119,16 @@ export default {
       if (loop) {
         alert("Tên lớp không thể trùng. Hãy nhập tên khác");
       } else {
-        this.departments.push({
+        if (this.newDepart) {
+          this.departments.push({
           idDepart: this.idDepart++,
           name: this.newDepart,
           edit: false
         });
         this.newDepart = "";
+        } else {
+          alert('Tên lớp không được để trống');
+        }
       }
     },
 
@@ -166,7 +170,7 @@ export default {
   background-color: #ffff;
 }
 .listuser {
-  background-color: #b1aeae;
+  background-color: #cbcfd2;
 }
 #app h2 {
   text-align: center;
@@ -179,47 +183,54 @@ export default {
 }
 
 #app .content .del {
-  background: none;
-  color: red;
+  margin-left: 3px;
+  border-radius: 5px;
+  background-color: rgb(245, 38, 86);
   font-weight: bold;
-  border: 0;
-  float: right;
-}
-#app .content .view {
-  background: none;
-  color: rgb(0, 255, 55);
-  font-weight: bold;
-  border: 0;
-  float: right;
-}
-#app .content .edit {
-  background: none;
 
+  float: right;
+}
+
+#app .content .edit {
+  border-radius: 5px;
+  background-color: greenyellow;
+  margin-left: 3px;
   font-weight: bold;
-  border: 0;
+  
   float: right;
 }
 #app .category .edit {
-  background: none;
-
+  margin-left: 3px;
   font-weight: bold;
-  border: 0;
+  border-radius: 5px;
+  background-color: greenyellow;
+
   float: right;
 }
 #app .category {
   margin: 20px;
 }
 #app .category .del {
-  background: none;
-  color: red;
+  margin-left: 3px;
+  border-radius: 5px;
+  background-color: rgb(245, 38, 86);
+
   font-weight: bold;
-  border: 0;
 }
-#app .category .add {
+#app .category .adds {
   margin-top: 10px;
 }
 #app .category button {
   float: right;
   margin-top: 10px;
+}
+.create {
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #846add;
+  margin-top: 10px;
+  float: right;
+  border: 0;
 }
 </style>

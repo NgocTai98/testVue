@@ -10,34 +10,37 @@
     </div>
     <div class="info">
       <div class="form-group">
-        <p>Tên sinh viên:</p>
-        <input type="text" class="form-control" :placeholder="name" v-model="newName" />
-        <span>Tuổi:</span>
-        <select name id v-model="newYear">
-          <option v-for="(year, index) in date" :key="index">{{ year }}</option>
-        </select>
+        <div>
+            <span>Tên sinh viên:</span>
+            <input type="text" class="formInput" :placeholder="name" v-model="newName" />
+          </div>
+        <div>
+            <span>Tuổi:</span>
+            <select name id v-model="newYear" class="age">
+              <option v-for="(year, index) in date" :key="index">{{ year }}</option>
+            </select>
+            <span style="margin-left: 30px">Giới tính:</span>
+            <input type="radio" name="sex" v-model="newSex" value="nam" />
+            <span>Nam</span>
+            <input type="radio" name="sex" v-model="newSex" value="nữ" />
+            <span>Nữ</span>
+          </div>
 
-        <span v-if="sex == 'nam'">
-          <input type="radio" name="sex" value="nam" v-model="newSex" />
-          <span>Nam</span>
-          <input type="radio" name="sex" value="nữ" v-model="newSex" />
-          <span>Nữ</span>
-        </span>
-        <span v-if="sex == 'nữ'">
-          <input type="radio" name="sex" value="nam" v-model="newSex" />
-          <span>Nam</span>
-          <input type="radio" name="sex" value="nữ" v-model="newSex" />
-          <span>Nữ</span>
-        </span>
+          <div style="margin-top: 5px">
+            <span>Số điện thoại:</span>
+            <input type="text" class="formInput" :placeholder="phone" v-model="newPhone" />
+          </div>
 
-        <p>Số điện thoai:</p>
-        <input type="text" class="form-control" :placeholder="phone" v-model="newPhone" />
+          <div style="margin-top: 5px">
+            <span style="margin-right: 50px;">Địa chỉ:</span>
+            <input type="text" class="formInput" :placeholder="address" v-model="newAddress" />
+          </div>
 
-        <p>Địa chỉ</p>
-        <input type="text" class="form-control" :placeholder="address" v-model="newAddress" />
-        <p>Lớp:</p>
-        <input type="text" class="form-control" :placeholder="depart" v-model="newDepart" />
-        <button class="btn btn-primary" @click="editStudent(id)">Lưu</button>
+          <div style="margin-top: 5px">
+            <span style="margin-right: 73px;">Lớp:</span>
+            <input type="text" class="formInput" :placeholder="depart" v-model="newDepart" />
+          </div>
+        <button class="editStu" @click="editStudent(id)">Lưu</button>
       </div>
     </div>
     <!-- <router-view></router-view> -->
@@ -142,11 +145,32 @@ export default {
 };
 </script>
 <style >
-.edituser {
-  background-color: #a5acb3;
-}
+
 .info {
   width: 500px;
   margin-left: 430px;
+}
+.editStu {
+  width: 100px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #846add;
+  margin-top: 10px;
+  margin-left: 200px;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 0;
+}
+.formInput {
+  padding-left: 50px;
+  border: 0;
+  height: 50px;
+  border-radius: 25px;
+  width: 300px;
+  background-color: #e6e6e6;
+}
+.age {
+  border-radius: 5px;
 }
 </style>

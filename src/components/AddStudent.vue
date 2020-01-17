@@ -1,36 +1,52 @@
 <template>
-  <div class="adduser">
-    <h1
-      style="text-align: center; color: green; text-transform: uppercase"
-    >Thêm thông tin của sinh viên</h1>
-    <div v-if="errors.length">
-      <div class="alert alert-danger" role="alert" v-for="(error, index) in errors" :key="index">
-        <strong>{{ error }}</strong>
+  <div class="container">
+    <div class="adduser">
+      <h1
+        style="text-align: center; color: green; text-transform: uppercase"
+      >Thêm thông tin của sinh viên</h1>
+      <div v-if="errors.length">
+        <div class="alert alert-danger" role="alert" v-for="(error, index) in errors" :key="index">
+          <strong>{{ error }}</strong>
+        </div>
       </div>
-    </div>
-    <div class="info">
-      <div class="form-group">
-        <p>Tên sinh viên:</p>
-        <input type="text" class="form-control" placeholder="Tên sinh viên" v-model="name" />
-        <span>Tuổi:</span>
-        <select name id v-model="age">
-          <option v-for="(year, index) in date" :key="index">{{ year }}</option>
-        </select>
-        <span>Giới tính:</span>
-        <input type="radio" name="sex" v-model="sex" value="nam" />
-        <span>Nam</span>
-        <input type="radio" name="sex" v-model="sex" value="nữ" />
-        <span>Nữ</span>
-        <p>Số điện thoại:</p>
-        <input type="text" class="form-control" placeholder="Số điện thoại" v-model="phone" />
-        <p>Địa chỉ:</p>
-        <input type="text" class="form-control" placeholder="Địa chỉ sinh viên" v-model="address" />
-        <p>Lớp:</p>
-        <input type="text" class="form-control" placeholder="Sinh viên lớp" v-model="depart" />
-        <button class="btn btn-primary" @click="addStudent">Lưu</button>
+      <div class="info">
+        <div class="form-group">
+          <div>
+            <span>Tên sinh viên:</span>
+            <input type="text" class="formInput" placeholder="Nguyễn Văn A" v-model="name" />
+          </div>
+
+          <div>
+            <span>Tuổi:</span>
+            <select name id v-model="age" class="age">
+              <option v-for="(year, index) in date" :key="index">{{ year }}</option>
+            </select>
+            <span style="margin-left: 30px">Giới tính:</span>
+            <input type="radio" name="sex" v-model="sex" value="nam" />
+            <span>Nam</span>
+            <input type="radio" name="sex" v-model="sex" value="nữ" />
+            <span>Nữ</span>
+          </div>
+
+          <div style="margin-top: 5px">
+            <span>Số điện thoại:</span>
+            <input type="text" class="formInput" placeholder="012345678" v-model="phone" />
+          </div>
+
+          <div style="margin-top: 5px">
+            <span style="margin-right: 50px;">Địa chỉ:</span>
+            <input type="text" class="formInput" placeholder="Hoàn Kiếm Hà Nội" v-model="address" />
+          </div>
+
+          <div style="margin-top: 5px">
+            <span style="margin-right: 73px;">Lớp:</span>
+            <input type="text" class="formInput" placeholder="Kinh tế" v-model="depart" />
+          </div>
+          <button class="add" @click="addStudent">Lưu</button>
+        </div>
       </div>
+      <!-- <router-view></router-view> -->
     </div>
-    <!-- <router-view></router-view> -->
   </div>
 </template>
 <script>
@@ -114,12 +130,9 @@ export default {
 };
 </script>
 <style >
-.adduser {
-  background-color: #a5acb3;
-}
 .info {
   width: 500px;
-  margin-left: 400px;
+  margin-left: 350px;
 }
 .info p {
   font-weight: bold;
@@ -128,5 +141,29 @@ export default {
 .info span {
   font-weight: bold;
   color: brown;
+}
+.formInput {
+  padding-left: 50px;
+  border: 0;
+  height: 50px;
+  border-radius: 25px;
+  width: 300px;
+  background-color: #e6e6e6;
+}
+
+.add {
+  width: 100px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #846add;
+  margin-top: 10px;
+  margin-left: 200px;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 0;
+}
+.age {
+  border-radius: 5px;
 }
 </style>
